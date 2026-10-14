@@ -72,6 +72,11 @@ h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,44px);mar
 .vid figcaption{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
 .vid figcaption b{font-family:var(--display);font-weight:400;font-size:22px}
 .vid figcaption span{color:var(--muted);font-size:14px}
+.toprow{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+.lang button{border:0;background:transparent;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.08em;padding:5px 12px;border-radius:999px;min-width:44px}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+@media (max-width:760px){.lang{position:fixed;z-index:15;top:calc(10px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));background:var(--surface);box-shadow:0 2px 10px rgba(0,0,0,.25)}}
 /* bio */
 .bio{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(24px,5vw,64px)}
 .bio-text{min-width:0;white-space:pre-line;font-size:16.5px;line-height:1.7;max-width:65ch}
@@ -130,6 +135,24 @@ var RESET=':root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-a
 var FONTS='https://fonts.googleapis.com/css2?family=Forum&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap';
 var saved=JSON.parse(document.getElementById('state').textContent);
 var state=JSON.parse(JSON.stringify(saved));
+var KK={"role": "Кино және телехикая актері · әнші · сахна әртісі", "city": "Тараз", "height": "169 см", "eyes": "Сұр-көгілдір", "hair": "Ашық қоңыр, қысқа", "languages": "Қазақ тілі (еркін), орыс тілі", "skills": "Вокал — «Мерей» тобының 14 жыл бойғы солисі, сахна шеберлігі, көрерменмен жұмыс, концерт жүргізу", "bio": "1986 жылы 20 тамызда Тараз қаласында дүниеге келдім. Балалық шағым балалар үйінде өтті — ерте көрген сынақтар қолдауды, адами жылуды және рух күшін бағалауға үйретті. Сахна мен үшін сезімімді бөлісіп, көрерменмен музыка мен өнер тілінде сөйлесетін орынға айналды.\n\n2002–2016 жылдары Тараздағы «Мерей» вокалдық тобының солисі болдым. Алғашында балалар үйінің тәрбиеленушілерінен құрылған ұжым 2007 жылдан бастап Жамбыл облыстық филармониясының жанында жұмыс істеді. Он төрт жылғы концерттер, гастрольдер мен көрерменмен тікелей жұмыс мен үшін сахналық тәртіп пен ансамбльдік орындаушылықтың нағыз мектебі болды.\n\nҚалалық мәдениет үйінде, облыстық филармонияда және драма театрында жұмыс істедім. Қазақстандық телехикаялар мен экрандық жобаларда түсірілдім — 18-ден астам жұмыс, солардың ішінде «Оян, қазақ!» және «Он алты жасар чемпион».\n\nҚазақ тілін еркін меңгергенмін және оны басқа ұлт өкілдері арасында насихаттауға атсалысамын. Мен үшін тіл — құрмет белгісі әрі түрлі тектегі адамдарды байланыстыратын көпір.\n\nАлисултан — менің мұсылманша есімім. Бүгінде бұл есім музыкамен, авторлық шығармашылықпен және көрерменмен жұмыспен байланысты.\n\n«Сахна — жеке тарих ортақ сезімге айналатын орын».", "films": "«Он алты жасар чемпион» — басты рөл, жаттықтырушы Николай Трофимович · реж. Нургельды Садыгулов\n«Мыржақып. Оян, қазақ!» — эпизод, цензор-аудармашы Смирнов · реж. Мурат Есжанов\n«III Интернационал» — Алексей · реж. Д. Бекмагамбетов\n«Қаламгер» — А. Л. Жовтис · реж. Б. Санитас\n«Тас өткел» — эпизод, қызыл әскер жауынгері · реж. Б. Санитас\n«Кейкі мерген» — адъютант · реж. М. Бидосов\n«Жүрек жыры» — П. Кузнецов, аудармашы · реж. Е. Лисасина\n«Ынтымақ ауылы» — Иван · реж. М. Маханов\n«Көршілер» — көрші Вовка · реж. Ж. Еспенбетов\n«Хат» — Сергей · реж. Ботагоз Кенишбай\n«Мәдениет үйі» — Гена, моторшы · реж. М. Маханов", "cats": {"Анфас": "Анфас", "Профиль": "Профиль", "Полный рост": "Толық бой", "Образы": "Бейнелер", "Кадры из сериалов": "Телехикаялардан кадрлар", "Радость": "Қуаныш", "Смех": "Күлкі", "Грусть": "Мұң", "Слёзы": "Көз жас", "Гнев": "Ашу", "Страх": "Қорқыныш", "Удивление": "Таңдану", "Задумчивость": "Ойлану", "Ирония": "Мысқыл"}, "vroles": {"Гена, моторист": "Гена, моторшы", "цензор‑переводчик Смирнов": "цензор-аудармашы Смирнов", "А. Л. Жовтис": "А. Л. Жовтис", "адъютант": "адъютант", "Иван": "Иван"}};
+var T={ru:{folio:'Кастинг‑портфолио',city:'Город',age:'Игровой возраст',height:'Рост',eyes:'Глаза',hair:'Волосы',langs:'Языки',skills:'Навыки',tel:'Тел',mail:'Почта',hero:'Главное фото',heroEmpty:'Главное фото появится здесь',video:'Видео',clip:function(n){return n+' отрывк'+(n===1?'':'а')},emo:'Эмоции',photos:' фото',soon:'Фотографии скоро появятся.',all:'Все',cats:'Категории',open:'Открыть фото',about:'О себе',films:'Фильмография',series:'сериал',copied:'Скопировано: ',close:'Закрыть',prev:'Предыдущее',next:'Следующее',part:function(n){return 'отрывок '+n}},
+       kk:{folio:'Кастинг‑портфолио',city:'Қала',age:'Рөлдік жасы',height:'Бойы',eyes:'Көзі',hair:'Шашы',langs:'Тілдері',skills:'Дағдылары',tel:'Тел',mail:'Пошта',hero:'Басты фото',heroEmpty:'Басты фото осында болады',video:'Бейне',clip:function(n){return n+' үзінді'},emo:'Эмоциялар',photos:' фото',soon:'Фотосуреттер жақында қосылады.',all:'Барлығы',cats:'Санаттар',open:'Фотоны ашу',about:'Өзім туралы',films:'Фильмография',series:'телехикая',copied:'Көшірілді: ',close:'Жабу',prev:'Алдыңғы',next:'Келесі',part:function(n){return n+'-үзінді'}}};
+var LANG=(function(){var h=(location.hash||'').toLowerCase();if(h==='#kz'||h==='#kk')return 'kk';if(h==='#ru')return 'ru';var v=null;try{v=localStorage.getItem('lang')}catch(e){}if(v==='kk'||v==='ru')return v;return /^kk/i.test(navigator.language||'')?'kk':'ru'})();
+function L(k){return T[LANG][k]}
+function localized(){
+  if(LANG!=='kk')return saved;
+  var o=JSON.parse(JSON.stringify(saved));
+  ['role','city','height','eyes','hair','languages','skills','bio','films'].forEach(function(k){if(KK[k])o[k]=KK[k]});
+  o.cats.forEach(function(c){if(KK.cats[c.name])c.name=KK.cats[c.name]});
+  (o.videos||[]).forEach(function(v){
+    v.title=v.title.replace(/отрывок (\d+)/,function(_,n){return L('part')(+n)});
+    if(KK.vroles[v.role])v.role=KK.vroles[v.role];
+  });
+  return o;
+}
+function setLang(l){LANG=l;try{if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}try{localStorage.setItem('lang',l)}catch(e){}document.documentElement.lang=l==='kk'?'kk':'ru';state=localized();render();}
+state=localized();document.documentElement.lang=LANG==='kk'?'kk':'ru';
 var CSS=document.getElementById('st').textContent;
 var JS=document.getElementById('app').textContent;
 var DKEY='portfolio-draft';
@@ -154,12 +177,12 @@ if(draft){ var d=ss(function(){return JSON.parse(draft)});
   else{ss(function(){sessionStorage.removeItem(DKEY)}); if(d&&d.base!==BASE&&d.state&&JSON.stringify(d.state)!==BASE){notice='Страница обновилась. Несохранённые правки из старой версии сброшены, чтобы не стереть новое.'}} }
 
 function slateRows(){
-  return [['Город',state.city],['Игровой возраст',state.age],['Рост',state.height],['Глаза',state.eyes],['Волосы',state.hair],['Языки',state.languages]].filter(function(r){return r[1]});
+  return [[L('city'),state.city],[L('age'),state.age],[L('height'),state.height],[L('eyes'),state.eyes],[L('hair'),state.hair],[L('langs'),state.languages]].filter(function(r){return r[1]});
 }
 function contactChips(){
   var out=[];
-  if(state.phone) out.push('<button class="chip" data-copy="'+esc(state.phone)+'"><small>Тел</small>'+esc(state.phone)+'</button>');
-  if(state.email) out.push('<button class="chip" data-copy="'+esc(state.email)+'"><small>Почта</small>'+esc(state.email)+'</button>');
+  if(state.phone) out.push('<button class="chip" data-copy="'+esc(state.phone)+'"><small>'+L('tel')+'</small>'+esc(state.phone)+'</button>');
+  if(state.email) out.push('<button class="chip" data-copy="'+esc(state.email)+'"><small>'+L('mail')+'</small>'+esc(state.email)+'</button>');
   if(state.telegram){var tg=state.telegram.replace(/^@|https?:\/\/t\.me\//g,'');out.push('<a class="chip" target="_blank" rel="noopener" href="https://t.me/'+esc(encodeURIComponent(tg))+'"><small>Telegram</small>@'+esc(tg)+'</a>')}
   if(state.instagram){var ig=state.instagram.replace(/^@|https?:\/\/(www\.)?instagram\.com\//g,'').split(/[?\/]/)[0];out.push('<a class="chip" target="_blank" rel="noopener" href="https://instagram.com/'+esc(encodeURIComponent(ig))+'"><small>Instagram</small>@'+esc(ig)+'</a>')}
   if(state.tiktok){var tt=state.tiktok.replace(/^https?:\/\/(www\.)?tiktok\.com\//,'').replace(/^@/,'').split(/[?\/]/)[0];out.push('<a class="chip" target="_blank" rel="noopener" href="https://www.tiktok.com/@'+esc(encodeURIComponent(tt))+'"><small>TikTok</small>@'+esc(tt)+'</a>')}
@@ -169,7 +192,7 @@ function filmsList(){
   return state.films.split('\n').map(function(l){return l.trim()}).filter(Boolean).map(function(l){
     var m=l.match(/^(\d{4})\s*[—–\-:.]?\s*(.*)$/);
     var t=m?m[2]:l,i=t.indexOf(' · ');var main=i<0?t:t.slice(0,i),dir=i<0?'':t.slice(i+3);
-    return '<li><span class="y">'+(m?esc(m[1]):'сериал')+'</span><span>'+esc(main)+(dir?'<small class="dir">'+esc(dir)+'</small>':'')+'</span></li>';
+    return '<li><span class="y">'+(m?esc(m[1]):L('series'))+'</span><span>'+esc(main)+(dir?'<small class="dir">'+esc(dir)+'</small>':'')+'</span></li>';
   }).join('');
 }
 
@@ -181,28 +204,28 @@ function render(){
   var html='';
   if(ed) html+=formPanel();
   html+='<header class="wrap hero"><div class="hero-text">'
-    +'<div class="label">Кастинг‑портфолио</div>'
+    +'<div class="toprow"><div class="label">'+L('folio')+'</div><div class="lang" role="group" aria-label="Тіл / Язык"><button data-lang="kk" aria-pressed="'+(LANG==='kk')+'">Қаз</button><button data-lang="ru" aria-pressed="'+(LANG==='ru')+'">Рус</button></div></div>'
     +'<h1 class="name">'+(state.name?esc(state.name):'Ваше имя')+'</h1>'
     +(state.aka?'<p class="aka">'+esc(state.aka)+'</p>':'')
     +(state.role?'<p class="role">'+esc(state.role)+'</p>':'')
     +(slateRows().length?'<div class="slate">'+slateRows().map(function(r){return '<div><span class="label">'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>'}).join('')+'</div>':'')
-    +(state.skills?'<div><div class="label" style="margin-bottom:6px">Навыки</div><div>'+esc(state.skills)+'</div></div>':'')
+    +(state.skills?'<div><div class="label" style="margin-bottom:6px">'+L('skills')+'</div><div>'+esc(state.skills)+'</div></div>':'')
     +(contactChips()?'<div class="contacts">'+contactChips()+'</div>':'')
     +'</div><div class="hero-photo"><div class="frame">'
-    +(h?'<img src="'+src(h)+'" alt="'+esc(state.name||'Главное фото')+'">':'<div class="empty">Главное фото появится здесь</div>')
+    +(h?'<img src="'+src(h)+'" alt="'+esc(state.name||L('hero'))+'">':'<div class="empty">'+L('heroEmpty')+'</div>')
     +'<span class="mark">КАДР 01</span></div></div></header>';
 
   var vids=state.videos||[];
   if(vids.length){
-    html+='<section class="wrap section" id="video"><div class="sec-head"><h2>Видео</h2><span class="label">'+vids.length+' отрывк'+(vids.length===1?'':'а')+'</span></div><div class="videos">'
+    html+='<section class="wrap section" id="video"><div class="sec-head"><h2>'+L('video')+'</h2><span class="label">'+L('clip')(vids.length)+'</span></div><div class="videos">'
       +vids.map(function(v,i){return '<figure class="vid"><video controls playsinline preload="metadata" src="'+src(v.id)+'"'+(v.poster?' poster="'+src(v.poster)+'"':'')+'></video><figcaption><b>'+esc(v.title)+'</b><span>'+esc([v.role,v.dir].filter(Boolean).join(' · '))+'</span>'+(ed?'<button class="btn small danger" data-delvid="'+i+'">'+(v._confirm?'Точно убрать?':'Убрать видео')+'</button>':'')+'</figcaption></figure>'}).join('')
       +'</div></section>';
   }
-  html+='<section class="wrap section" id="photos"><div class="sec-head"><h2>Эмоции</h2><span class="label">'+state.photos.length+' фото</span></div>';
+  html+='<section class="wrap section" id="photos"><div class="sec-head"><h2>'+L('emo')+'</h2><span class="label">'+state.photos.length+L('photos')+'</span></div>';
   if(!visibleCats.length){
-    html+='<div class="cat-empty">Фотографии скоро появятся.</div>';
+    html+='<div class="cat-empty">'+L('soon')+'</div>';
   } else {
-    html+='<nav class="tabs" aria-label="Категории"><button class="tab" data-f="all" aria-pressed="'+(filter==='all')+'">Все<span>'+state.photos.length+'</span></button>'
+    html+='<nav class="tabs" aria-label="'+L('cats')+'"><button class="tab" data-f="all" aria-pressed="'+(filter==='all')+'">'+L('all')+'<span>'+state.photos.length+'</span></button>'
       +visibleCats.map(function(c){return '<button class="tab" data-f="'+c.id+'" aria-pressed="'+(filter===c.id)+'">'+esc(c.name)+'<span>'+catPhotos(c.id).length+'</span></button>'}).join('')+'</nav>';
     visibleCats.filter(function(c){return filter==='all'||filter===c.id}).forEach(function(c){
       var ps=catPhotos(c.id);
@@ -224,7 +247,7 @@ function render(){
               +'<select data-move="'+p.id+'" aria-label="Переместить">'+state.cats.map(function(cc){return '<option value="'+cc.id+'"'+(cc.id===p.cat?' selected':'')+'>'+esc(cc.name)+'</option>'}).join('')+'</select>'
               +'<button data-del="'+p.id+'">'+(p._confirm?'Удалить?':'✕')+'</button></div>';
           }
-          return '<figure class="ph"><button class="ph-open" data-open="'+p.id+'" aria-label="Открыть фото"><img loading="lazy" src="'+src(p.id)+'" alt="'+esc(c.name)+'"></button>'+t+'</figure>';
+          return '<figure class="ph"><button class="ph-open" data-open="'+p.id+'" aria-label="'+L('open')+'"><img loading="lazy" src="'+src(p.id)+'" alt="'+esc(c.name)+'"></button>'+t+'</figure>';
         }).join('')+'</div>';
       }
       html+='</div>';
@@ -234,10 +257,10 @@ function render(){
   html+='</section>';
 
   if(state.bio||state.films){
-    html+='<section class="wrap section"><div class="bio"><div><div class="sec-head"><h2>О себе</h2></div><div class="bio-text">'+esc(state.bio)+'</div></div>'
-      +(state.films?'<div><div class="sec-head"><h2>Фильмография</h2></div><ul class="films">'+filmsList()+'</ul></div>':'')+'</div></section>';
+    html+='<section class="wrap section"><div class="bio"><div><div class="sec-head"><h2>'+L('about')+'</h2></div><div class="bio-text">'+esc(state.bio)+'</div></div>'
+      +(state.films?'<div><div class="sec-head"><h2>'+L('films')+'</h2></div><ul class="films">'+filmsList()+'</ul></div>':'')+'</div></section>';
   }
-  html+='<footer class="wrap foot">'+(state.name?esc(state.name)+(state.aka?' ('+esc(state.aka)+')':'')+' · ':'')+'кастинг‑портфолио</footer>';
+  html+='<footer class="wrap foot">'+(state.name?esc(state.name)+(state.aka?' ('+esc(state.aka)+')':'')+' · ':'')+L('folio').toLowerCase()+'</footer>';
 
   if(owner){
     html+='<div class="bar"><div class="wrap"><div class="status">'
@@ -324,9 +347,9 @@ function openLb(id){
 }
 function drawLb(){
   var p=lbList[lbIdx];
-  lbEl.innerHTML='<div class="lb-top"><span>'+esc(p.cat)+' · '+(lbIdx+1)+' / '+lbList.length+'</span><button data-lbclose="1" aria-label="Закрыть">✕</button></div>'
+  lbEl.innerHTML='<div class="lb-top"><span>'+esc(p.cat)+' · '+(lbIdx+1)+' / '+lbList.length+'</span><button data-lbclose="1" aria-label="'+L('close')+'">✕</button></div>'
     +'<div class="lb-img"><img src="'+src(p.id)+'" alt="'+esc(p.cat)+'"></div>'
-    +(lbList.length>1?'<button class="nav prev" data-lbstep="-1" aria-label="Предыдущее">‹</button><button class="nav next" data-lbstep="1" aria-label="Следующее">›</button>':'');
+    +(lbList.length>1?'<button class="nav prev" data-lbstep="-1" aria-label="'+L('prev')+'">‹</button><button class="nav next" data-lbstep="1" aria-label="'+L('next')+'">›</button>':'');
   lbEl.querySelector('[data-lbclose]').focus();
 }
 function stepLb(d){lbIdx=(lbIdx+d+lbList.length)%lbList.length;drawLb()}
@@ -336,10 +359,11 @@ document.addEventListener('keydown',function(e){if(!lbEl)return;if(e.key==='Esca
 /* events */
 document.addEventListener('click',function(e){
   var t=e.target.closest('button,[data-lbclose]');if(!t)return;var d=t.dataset;
+  if(d.lang){setLang(d.lang);return}
   if(d.lbclose){closeLb();return} if(d.lbstep){stepLb(+d.lbstep);return}
   if(d.f){filter=d.f;render();return}
   if(d.open){openLb(d.open);return}
-  if(d.copy){var v=d.copy;try{navigator.clipboard.writeText(v).then(function(){toast('Скопировано: '+v)},function(){toast(v)})}catch(_){toast(v)}return}
+  if(d.copy){var v=d.copy;try{navigator.clipboard.writeText(v).then(function(){toast(L('copied')+v)},function(){toast(v)})}catch(_){toast(v)}return}
   if(d.edit){editing=true;preview=false;render();return}
   if(d.preview){preview=!preview;render();return}
   if(d.save){save();return}
