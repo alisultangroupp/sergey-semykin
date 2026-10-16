@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alisultangroupp.github.io/sergey-semykin/sitemap.xml
